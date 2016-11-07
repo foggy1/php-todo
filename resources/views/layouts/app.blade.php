@@ -67,6 +67,13 @@
         </style>
 </head>
 <body>
+    <div class="top-right links">
+        <a href="/">Home</a>
+        @if (Route::has('login'))
+            <a href="{{ url('/login') }}">Login</a>
+            <a href="{{ url('/register') }}">Register</a>
+        @endif
+    </div>
     @yield('content')
 </body>
 </html>
