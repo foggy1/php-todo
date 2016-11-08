@@ -6,13 +6,13 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
         <style>
             html, body {
                 background-color: #fff;
@@ -24,7 +24,8 @@
             }
 
             .full-height {
-                height: 100vh;
+                height: 300px;
+                margin: auto;
             }
 
             .flex-center {
@@ -67,13 +68,11 @@
         </style>
 </head>
 <body>
-    <div class="top-right links">
-        <a href="/">Home</a>
-        @if (Route::has('login'))
-            <a href="{{ url('/login') }}">Login</a>
-            <a href="{{ url('/register') }}">Register</a>
-        @endif
-    </div>
+    <ul class="nav nav-tabs">
+        <li role="presentation" class="active"><a href="/">Home</a></li>
+        <li role="presentation"><a href="/login">Login</a></li>
+        <li role="presentation"><a href="/users/new">Register</a></li>
+    </ul>
     @yield('content')
 </body>
 </html>
