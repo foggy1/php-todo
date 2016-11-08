@@ -18,3 +18,13 @@ Route::get('/', function () {
 Route::get('/about', function() {
     return view('about');
 });
+
+Route::get('/users/new', function() {
+    return view('users/new');
+});
+
+Route::get('/login', function() {
+    return view('login');
+})->name('login');
+
+
