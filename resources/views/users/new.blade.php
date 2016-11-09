@@ -8,6 +8,7 @@
 
 <div class="container registrationPage">
     <form class="registration" action="/users" method="post">
+    <input type="hidden" name="_token" value="{{ csrf_token() }}">
       <div class="row">
         <div class="form-group">
           <div class="col-sm-6 col-sm-offset-3">

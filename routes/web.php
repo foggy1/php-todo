@@ -28,5 +28,5 @@ Route::get('/login', function() {
 })->name('login');
 
 Route::post('/users', function() {
-    
-})
+    echo 'Hello ' . htmlspecialchars($_POST["name"]) . '!';
+});
