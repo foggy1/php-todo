@@ -69,7 +69,7 @@
 </head>
 <body>
     <ul class="nav nav-tabs">
-        <li role="presentation" class="active"><a href="/">Home</a></li>
+        <li role="presentation"><a href="/">Home</a></li>
         <li role="presentation"><a href="/login">Login</a></li>
         <li role="presentation"><a href="/users/new">Register</a></li>
     </ul>
