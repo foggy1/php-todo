@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Task extends Model
 {
     //
-  public function list()
+  public function todo_list()
   {
-      return $this->belongsTo('App\List');
-  };
+      return $this->belongsTo('App\TodoList');
+  }
 }
