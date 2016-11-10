@@ -17,7 +17,7 @@ class CreateTasksTable extends Migration
             $table->increments('id');
             $table->text('description');
             $table->boolean('status')->default(false);
-            $table->integer('list_id');
+            $table->integer('todo_list_id');
             $table->timestamps();
         });
     }

@@ -27,13 +27,13 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function lists()
+    public function todo_lists()
     {
-        return $this->hasMany('App\List');
-    };
+        return $this->hasMany('App\TodoList');
+    }
 
     public function tasks()
     {
-        return $this->hasManythrough('App\Task', 'App\List');
-    };
+        return $this->hasManythrough('App\Task', 'App\TodoList');
+    }
 }
