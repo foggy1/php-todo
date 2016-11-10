@@ -9,12 +9,12 @@ class List extends Model
     //
   public function tasks()
   {
-      return $this->hasMany('App\Task')
-  }
+      return $this->hasMany('App\Task');
+  };
 
   public function user()
   {
-      return $this->belongsTo('App\User')
-  }
+      return $this->belongsTo('App\User');
+  };
 
 }

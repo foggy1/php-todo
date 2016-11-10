@@ -9,6 +9,6 @@ class Task extends Model
     //
   public function list()
   {
-      return $this->belongsTo('App\List')
-  }
+      return $this->belongsTo('App\List');
+  };
 }
