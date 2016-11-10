@@ -31,4 +31,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\List');
     };
+
+    public function tasks()
+    {
+        return $this->hasManythrough('App\Task', 'App\List');
+    };
 }
