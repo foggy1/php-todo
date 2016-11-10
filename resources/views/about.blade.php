@@ -12,12 +12,9 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-sm-4 col-sm-offset-4">
-        <ul class="nav nav-pills text-center aboutList">
-          <li role="presentation" class="text-center aboutLink"><a href="#">Home</a></li>
-          <li role="presentation" class="text-center aboutLink"><a href="#">Profile</a></li>
-          <li role="presentation" class="text-center aboutLink"><a href="#">Messages</a></li>
-        </ul>
+    <div class="text-center links">
+          <a href="https://github.com/foggy1/php-todo" target="_blank">Repo</a>
+          <a href="https://laravel.com/" target="_blank">Laravel</a>
     </div>
   </div>
 </div>
