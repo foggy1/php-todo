@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\TodoList;
 use Illuminate\Http\Request;
 use Auth;
 
 class UserListController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -35,7 +37,10 @@ class UserListController extends Controller
      */
     public function store(Request $request)
     {
-        echo "You get here dude!";
+        return TodoList::create([
+            'title' => $request['title'],
+            'user_id' => Auth::user()->id
+        ]);
     }
 
     /**
