@@ -28,6 +28,8 @@ Route::post('/users', function() {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', function() {
+    return view('user.lists.index', ['user' => Auth::user()]);
+});
 
-Route::resource('users.lists', 'UserListController');
+Route::resource('user.lists', 'UserListController');
