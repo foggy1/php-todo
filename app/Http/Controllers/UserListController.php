@@ -37,10 +37,12 @@ class UserListController extends Controller
      */
     public function store(Request $request)
     {
-        return TodoList::create([
+        TodoList::create([
             'title' => $request['title'],
             'user_id' => Auth::user()->id
         ]);
+
+        return redirect('/home');
     }
 
     /**
