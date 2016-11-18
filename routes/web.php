@@ -31,3 +31,5 @@ Auth::routes();
 Route::get('/home', 'UserListController@index');
 
 Route::resource('user.lists', 'UserListController');
+
+Route::resource('list.tasks', 'ListTaskController');
