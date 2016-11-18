@@ -5,21 +5,21 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <h1 class="h1">Hello, {{ $user->name }}!</h1>
+                <h1 class="h1">{{ $list->title }}</h1>
         </div>
     </div>
     <div class="row">
       <div class="col-md-8 col-md-offset-2">
-        <a href="user/{{ $user->id }}/lists/create">Make new list</a>
+        <a href={{ route('list.tasks.create', ['list' => $list]) }}>Make new task</a>
       </div>
     </div>
-    <div class="list-group">
-        @foreach ($lists as $list)
+    <dic class="list-group">
+        @foreach ($tasks as $task)
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                  <a href={{ route('user.lists.show', ['user' => $user, 'list' => $list]) }} class="list-group-item">
+                  <a href='#' class="list-group-item">
                   <span class="tag tag-default tag-pill float-xs-right"></span>
-                    {{ $list->title }}
+                    {{ $task->description }}
                   </a>
             </div>
         </div>

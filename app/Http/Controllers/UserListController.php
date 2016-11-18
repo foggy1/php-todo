@@ -58,9 +58,14 @@ class UserListController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($user_id, $id)
     {
-        //
+        $user = User::find($user_id);
+        $list = TodoList::find($id);
+        $tasks = $list->tasks;
+        return view('user.lists.show', ['user' => $user,
+                                        'list' => $list,
+                                        'tasks' => $tasks]);
     }
 
     /**
