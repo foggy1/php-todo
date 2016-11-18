@@ -16,7 +16,8 @@ class UserListController extends Controller
      */
     public function index()
     {
-        //
+        $lists = Auth::user()->todo_lists;
+        return view('user.lists.index', ['user' => Auth::user()])->with('lists', $lists);
     }
 
     /**

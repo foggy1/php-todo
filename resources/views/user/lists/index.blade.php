@@ -13,5 +13,8 @@
         <a href="user/{{ $user->id }}/lists/create">Make new list</a>
       </div>
     </div>
+    <div class="row">
+        {{ $lists }}
+    </div>
 </div>
 @endsection
