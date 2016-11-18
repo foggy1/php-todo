@@ -13,7 +13,7 @@
         <a href="user/{{ $user->id }}/lists/create">Make new list</a>
       </div>
     </div>
-    <dic class="list-group">
+    <div class="list-group">
         @foreach ($lists as $list)
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
