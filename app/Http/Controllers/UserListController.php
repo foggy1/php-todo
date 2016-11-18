@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
+use App\User;
 use App\TodoList;
 use Illuminate\Http\Request;
-use Auth;
 
 class UserListController extends Controller
 {
@@ -14,10 +15,15 @@ class UserListController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $lists = Auth::user()->todo_lists;
-        return view('user.lists.index', ['user' => Auth::user()])->with('lists', $lists);
+    public function index($user_id)
+    {   
+        if (auth()->user()->id != $user_id) {
+            abort(404);
+        };
+        $user = User::find($user_id);
+        $lists = $user->todo_lists;
+        return view('user.lists.index', ['user' => $user,
+                                         'lists' => $lists]);
     }
 
     /**

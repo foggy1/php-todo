@@ -28,7 +28,11 @@ Route::post('/users', function() {
 
 Auth::routes();
 
-Route::get('/home', 'UserListController@index');
+Route::get('/home', function() {
+  return redirect()->action(
+    'UserListController@index', ['user' => Auth::user()]
+  );
+});
 
 Route::resource('user.lists', 'UserListController');
 

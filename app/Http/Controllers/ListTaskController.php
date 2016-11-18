@@ -14,9 +14,10 @@ class ListTaskController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($list_id)
     {
-        //
+        $list = TodoList::find($list_id);
+        var_dump($list);
     }
 
     /**
