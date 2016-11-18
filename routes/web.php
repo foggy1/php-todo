@@ -19,10 +19,6 @@ Route::get('/about', function() {
     return view('about');
 });
 
-Route::get('/users/new', function() {
-    return view('users/new');
-});
-
 Route::get('/login', function() {
     return view('login');
 })->name('login');
@@ -32,4 +28,6 @@ Route::post('/users', function() {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', 'UserListController@index');
+
+Route::resource('user.lists', 'UserListController');
