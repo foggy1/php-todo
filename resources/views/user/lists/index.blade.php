@@ -10,7 +10,7 @@
     </div>
     <div class="row">
       <div class="col-md-8 col-md-offset-2">
-        <a href="user/{{ $user->id }}/lists/create">Make new list</a>
+        <a href={{ route('user.lists.create', ['user' => $user]) }}>Make new list</a>
       </div>
     </div>
     <div class="list-group">
