@@ -13,7 +13,7 @@
         <a href={{ route('list.tasks.create', ['list' => $list]) }}>Make new task</a>
       </div>
     </div>
-    <dic class="list-group">
+    <div class="list-group">
         @foreach ($tasks as $task)
         <div class="row">
             <div class="col-md-8 col-md-offset-2">

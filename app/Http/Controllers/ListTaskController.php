@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
-use App\Todolist;
+use App\TodoList;
 use App\Task;
 
 class ListTaskController extends Controller
@@ -17,7 +17,6 @@ class ListTaskController extends Controller
     public function index($list_id)
     {
         $list = TodoList::find($list_id);
-        var_dump($list);
     }
 
     /**
@@ -25,9 +24,10 @@ class ListTaskController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($list_id)
     {
-        //
+        $list = TodoList::find($list_id);
+        return view('list.tasks.create', ['list' => $list]);
     }
 
     /**
@@ -36,9 +36,18 @@ class ListTaskController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $list_id)
     {
-        //
+        $list = TodoList::find($list_id);
+        $tasks = $list->tasks;
+        Task::create([
+            'description' => $request['description'],
+            'todo_list_id' => $list_id
+        ]);
+
+        return view('user.lists.show', ['user' => Auth::user(), 
+                                        'list' => $list, 
+                                        'tasks' => $tasks]);
     }
 
     /**
