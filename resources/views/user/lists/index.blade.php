@@ -10,20 +10,21 @@
     </div>
     <div class="row">
       <div class="col-md-8 col-md-offset-2">
-        <a href="user/{{ $user->id }}/lists/create">Make new list</a>
+        <a href={{ route('user.lists.create', ['user' => $user]) }}>Make new list</a>
       </div>
     </div>
-    <div class="list-group">
+    <ul class="list-group">
         @foreach ($lists as $list)
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                  <a href="#" class="list-group-item">
-                  <span class="tag tag-default tag-pill float-xs-right"></span>
-                    {{ $list->title }}
-                  </a>
+
+                    <a href={{ route('user.lists.show', ['user' => $user, 'list' => $list]) }} class="list-group-item">
+                    <span class="tag tag-default tag-pill float-xs-right">{{ $list->tasks->count() }}</span>
+                      {{ $list->title }}
+                    </a>
             </div>
         </div>
         @endforeach
-    </div>
+    </ul>
 </div>
 @endsection
