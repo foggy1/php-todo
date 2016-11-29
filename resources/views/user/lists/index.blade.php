@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <h1 class="h1">Hello, {{ $user->name }}!</h1>
+                <h1 class="h1 text-center">Hello, {{ ucfirst($user->name) }}!</h1>
         </div>
     </div>
     <div class="row">

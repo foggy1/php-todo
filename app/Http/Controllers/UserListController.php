@@ -62,7 +62,7 @@ class UserListController extends Controller
     {
         $user = User::find($user_id);
         $list = TodoList::find($id);
-        $tasks = $list->tasks;
+        $tasks = $list->tasks->sortByDesc('created_at');
         return view('user.lists.show', ['user' => $user,
                                         'list' => $list,
                                         'tasks' => $tasks]);
