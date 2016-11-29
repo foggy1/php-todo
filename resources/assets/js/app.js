@@ -18,3 +18,25 @@ Vue.component('example', require('./components/Example.vue'));
 const app = new Vue({
     el: '#app'
 });
+
+$(function() {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $(".todos").on("click", "input", function(e) {
+        var id = Number(e.target.id);
+        var list_id = Number(e.target.closest(".todos").id);
+        $.ajax({
+            method: "PUT",
+            url: "/list/" + list_id + "/tasks/" + id
+        })
+        .done(function(response){
+            debugger;
+        })
+        .fail(function(e){
+            console.log(e.responseText);
+        })
+    });
+});

@@ -13,14 +13,13 @@
         <a href={{ route('list.tasks.create', ['list' => $list]) }}>Make new task</a>
       </div>
     </div>
-    <div class="list-group">
+    <div id={{ $list->id }} class="list-group todos">
         @foreach ($tasks as $task)
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                  <a href='#' class="list-group-item">
-                  <span class="tag tag-default tag-pill float-xs-right"></span>
-                    {{ $task->description }}
-                  </a>
+              <div id={{ $task->id }} class="checkbox">
+                <label ><input type="checkbox" value="">{{ $task->description }}</label>
+              </div>
             </div>
         </div>
         @endforeach

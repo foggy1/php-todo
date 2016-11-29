@@ -39,12 +39,12 @@ class ListTaskController extends Controller
     public function store(Request $request, $list_id)
     {
         $list = TodoList::find($list_id);
-        $tasks = $list->tasks;
         Task::create([
             'description' => $request['description'],
             'todo_list_id' => $list_id
         ]);
 
+        $tasks = $list->tasks;
         return view('user.lists.show', ['user' => Auth::user(), 
                                         'list' => $list, 
                                         'tasks' => $tasks]);
@@ -79,9 +79,13 @@ class ListTaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $list_id, $id)
     {
-        //
+        $list = TodoList::find($list_id);
+        $task = Task::find($id);
+        $task->status === 0 ? $task->status = 1 : $task->status = 0;
+        $task->save();
+        return $task->status;
     }
 
     /**
