@@ -18,7 +18,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
               <div id={{ $task->id }} class="checkbox">
-                <label ><input type="checkbox" value="">{{ $task->description }}</label>
+                <label @if ($task->status === 1) style="text-decoration: line-through;" @endif><input type="checkbox" value="" @if ($task->status === 1) checked  @endif>{{ $task->description }}</label>
               </div>
             </div>
         </div>
