@@ -21,6 +21,11 @@
                 <label @if ($task->status === 1) style="text-decoration: line-through;" @endif><input type="checkbox" value="" @if ($task->status === 1) checked  @endif>{{ $task->description }}</label>
                 </span>
                 <span class="input-group-btn">
+                  <button class="btn btn-warning" type="button">
+                    <i class="glyphicon glyphicon-pencil"></i>
+                  </button>
+                </span>
+                <span class="input-group-btn">
                   <button class="btn btn-danger" type="button">
                     <i class="glyphicon glyphicon-remove"></i>
                   </button>
