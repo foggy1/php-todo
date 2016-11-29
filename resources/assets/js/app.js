@@ -35,7 +35,6 @@ $(function() {
         })
         .done(function(response){
             response === "1" ? $(that).parent("label").css("text-decoration", "line-through") : $(that).parent("label").css("text-decoration", "none");
-            debugger;
         })
         .fail(function(e){
             console.log(e.responseText);
