@@ -17,8 +17,16 @@
         @foreach ($tasks as $task)
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-              <div id={{ $task->id }} class="checkbox">
-                <label @if ($task->status === 1) style="text-decoration: line-through;" @endif><input type="checkbox" value="" @if ($task->status === 1) checked  @endif>{{ $task->description }}</label>
+              <div id={{ $task->id }} class="input-group input-group-lg checkbox">
+                <span class="input-group-addon">
+                <input type="checkbox" value="" @if ($task->status === 1) checked  @endif>
+                </span>
+                <label @if ($task->status === 1) style="text-decoration: line-through;" @endif>{{ $task->description }}</label>
+                <span class="input-group-btn">
+                  <button class="btn btn-danger" type="button">
+                    <i class="glyphicon glyphicon-remove"></i>
+                  </button>
+                </span>
               </div>
             </div>
         </div>

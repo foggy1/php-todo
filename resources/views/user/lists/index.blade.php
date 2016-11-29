@@ -17,7 +17,6 @@
         @foreach ($lists as $list)
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-
                     <a href={{ route('user.lists.show', ['user' => $user, 'list' => $list]) }} class="list-group-item">
                     <span class="tag tag-default tag-pill float-xs-right">{{ $list->tasks->count() }}</span>
                       {{ $list->title }}
