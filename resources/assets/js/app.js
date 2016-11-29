@@ -26,7 +26,7 @@ $(function() {
         }
     });
     $(".todos").on("click", "input", function(e) {
-        var id = Number(e.target.id);
+        var id = Number(e.target.closest(".checkbox").id);
         var list_id = Number(e.target.closest(".todos").id);
         $.ajax({
             method: "PUT",
