@@ -44,7 +44,7 @@ class ListTaskController extends Controller
             'todo_list_id' => $list_id
         ]);
 
-        $tasks = $list->tasks;
+        $tasks = $list->tasks->sortByDesc('created_at');
         return view('user.lists.show', ['user' => Auth::user(), 
                                         'list' => $list, 
                                         'tasks' => $tasks]);

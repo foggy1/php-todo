@@ -5766,4 +5766,8 @@ button.close {
   .hidden-print {
     display: none !important; } }
 
+.outer-container {
+  width: 80%;
+  margin: 10px auto; }
+
 /*# sourceMappingURL=app.css.map */
