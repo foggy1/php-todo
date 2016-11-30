@@ -2,7 +2,7 @@
   <div :id="task.id" class="input-group input-group-lg checkbox">
           <span style="width:100%;" class="input-group-addon">
           
-          <label :class="{'completed': isCompleted}"><input type="checkbox" value="" checked>{{ task.description }}</label>
+          <label :class="{completed: isCompleted}"><input type="checkbox" value="" :checked="isCompleted">{{ task.description }}</label>
           </span>
           <span class="input-group-btn">
             <button class="btn btn-warning" type="button">
@@ -32,7 +32,7 @@
 
         computed: {
             isCompleted() {
-                return this.task.status === '1'
+                return this.task.status === 1
             }
         },
 
