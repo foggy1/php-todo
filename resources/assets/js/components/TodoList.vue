@@ -1,6 +1,6 @@
 <template>
     <div :id="list.id" class="outer-container list-group todos">
-        <task v-for="task in tasks" :task="task"></task>
+        <task v-for="task in tasks" :task="task" :listId="list.id"></task>
     </div>
 </template>
 

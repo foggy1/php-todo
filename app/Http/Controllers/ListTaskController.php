@@ -81,11 +81,13 @@ class ListTaskController extends Controller
      */
     public function update(Request $request, $list_id, $id)
     {
+        $newStatus = $request->input('task.status');
+        $newStatus === "false" ? $newStatus = false : $newStatus = true; 
         $list = TodoList::find($list_id);
         $task = Task::find($id);
-        $task->status === 0 ? $task->status = 1 : $task->status = 0;
+        $task->status = $newStatus;
         $task->save();
-        return $task->status;
+        return var_dump($task->status);
     }
 
     /**
