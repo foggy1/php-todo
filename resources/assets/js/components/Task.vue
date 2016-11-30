@@ -2,7 +2,7 @@
   <div :id="task.id" class="input-group input-group-lg checkbox">
           <span style="width:100%;" class="input-group-addon">
           
-          <label :class="{completed: task.status}"><input @change="update" type="checkbox" value="" v-model="task.status">{{ task.description }}</label>
+          <label :class="{completed: isCompleted}"><input @change="update" type="checkbox" value="" v-model="task.status">{{ task.description }}</label>
           </span>
           <span class="input-group-btn">
             <button class="btn btn-warning" type="button">
@@ -10,7 +10,7 @@
             </button>
           </span>
           <span class="input-group-btn">
-            <button class="btn btn-danger" type="button">
+            <button v-show="isCompleted" class="btn btn-danger" type="button">
               <i class="glyphicon glyphicon-remove"></i>
             </button>
           </span>
@@ -23,25 +23,21 @@
 
         data(){
             return {
+              isCompleted: this.task.status === 1
             }
         },
 
-        created() {
+        mounted() {
 
         },
 
         computed: {
-            isCompleted() {
-                return this.task.status === 1
-            }
+
         },
 
         methods: {
-            toggle() {
-              debugger;
-                this.task.status === 1 ? this.task.status = 0 : this.task.status = 1
-            },
             update() {
+              this.isCompleted = !this.isCompleted
               $.ajaxSetup({
                   headers: {
                       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

@@ -17,6 +17,10 @@ class ListTaskController extends Controller
     public function index($list_id)
     {
         $list = TodoList::find($list_id);
+        $tasks = $list->tasks->sortByDesc('created_at');
+        return view('user.lists.show', ['user' => Auth::user(),
+                                        'list' => $list,
+                                        'tasks' => $tasks]);
     }
 
     /**
