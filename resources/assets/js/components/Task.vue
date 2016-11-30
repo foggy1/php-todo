@@ -10,7 +10,7 @@
             </button>
           </span>
           <span class="input-group-btn">
-            <button v-show="isCompleted" class="btn btn-danger" type="button">
+            <button v-show="isCompleted" @click="destroy" class="btn btn-danger" type="button">
               <i class="glyphicon glyphicon-remove"></i>
             </button>
           </span>
@@ -54,6 +54,9 @@
                   console.log(e.responseText);
               })
                  
+            },
+            destroy() {
+              this.$parent.destroyTask(this);
             }
         }
     };

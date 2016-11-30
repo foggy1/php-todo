@@ -1,6 +1,6 @@
 <template>
-    <div :id="list.id" class="outer-container list-group todos">
-        <task v-for="task in tasks" :task="task" :listId="list.id"></task>
+    <div :id="listy.id" class="outer-container list-group todos">
+        <task v-for="task in tasky" :task="task" :listId="listy.id"></task>
     </div>
 </template>
 
@@ -10,6 +10,8 @@
 
         data(){
             return {
+                listy: this.list,
+                tasky: this.tasks
             }
         },
 
@@ -18,8 +20,23 @@
         },
 
         methods: {
-            isCompleted() {
+            destroyTask(task) {
+            Vue.delete(this.tasky, task.task); 
+            $.ajaxSetup({
+                  headers: {
+                      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                  }
+              });
+              $.ajax({
+                  method: "DELETE",
+                  url: "/list/" + this.list.id + "/tasks/" + task.task.id,
+              })
+              .done(function(response) {
 
+              })
+              .fail(function(e){
+                  console.log(e.responseText);
+              })
             }
         }
     };

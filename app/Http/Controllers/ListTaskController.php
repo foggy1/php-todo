@@ -100,8 +100,11 @@ class ListTaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($list_id, $id)
     {
-        //
+        $list = TodoList::find($list_id);
+        $task = Task::find($id);
+        $task->delete();
+        return json_encode($list->tasks->sortByDesc('created_at'));
     }
 }
