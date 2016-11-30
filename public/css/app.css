@@ -5771,6 +5771,6 @@ button.close {
   margin: 10px auto; }
 
 .completed {
-  text-decoration: strikethrough; }
+  text-decoration: line-through; }
 
 /*# sourceMappingURL=app.css.map */
