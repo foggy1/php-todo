@@ -1,6 +1,6 @@
 <template>
     <div :id="listy.id" class="outer-container list-group todos">
-        <task v-for="task in tasky" :task="task" :listId="listy.id"></task>
+        <task  v-for="task in tasky" :task="task" :listId="listy.id" :key="task.id" @remove="tasky.splice(index, 1)"></task>
     </div>
 </template>
 
@@ -21,7 +21,6 @@
 
         methods: {
             destroyTask(task) {
-            Vue.delete(this.tasky, task.task); 
             $.ajaxSetup({
                   headers: {
                       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -31,12 +30,16 @@
                   method: "DELETE",
                   url: "/list/" + this.list.id + "/tasks/" + task.task.id,
               })
-              .done(function(response) {
+              .done(response => {}
 
-              })
+              )
               .fail(function(e){
                   console.log(e.responseText);
               })
+            },
+            test(e) {
+                debugger;
+                this.tasky.splice(e, 1);
             }
         }
     };

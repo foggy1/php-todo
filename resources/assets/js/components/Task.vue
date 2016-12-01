@@ -19,7 +19,7 @@
 
 <script>
     export default {
-        props: ['task', 'listId'],
+        props: ['task', 'listId', 'key'],
 
         data(){
             return {
@@ -56,6 +56,9 @@
                  
             },
             destroy() {
+              debugger;
+              this.$emit('remove', this);
+              this.exists = false;
               this.$parent.destroyTask(this);
             }
         }

@@ -14,7 +14,7 @@
       </div>
     </div>
     <div id="app">
-      <todo-list :list="{{json_encode($list)}}" :tasks="{{json_encode($tasks)}}"></todo-list>
+      <todo-list :list="{{$list}}" :tasks="{{$tasks}}"></todo-list>
 
     </div>
 </div>
