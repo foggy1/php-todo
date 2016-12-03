@@ -1,17 +1,16 @@
 <template>
-    <div :id="listy.id" class="outer-container list-group todos">
-        <task  v-for="task in tasky" :task="task" :listId="listy.id" :key="task.id" @remove="destroyTask"></task>
+    <div :id="listTasks.id" class="outer-container list-group todos">
+        <task  v-for="task in listTasks.tasks" :task="task" :listId="listTasks.id" :key="task.id" @remove="destroyTask"></task>
     </div>
 </template>
 
 <script>
     export default {
-        props: ['list', 'tasks'],
+        props: ['list'],
 
         data(){
             return {
-                listy: this.list,
-                tasky: this.tasks
+                listTasks: this.list
             }
         },
 
@@ -28,17 +27,14 @@
               });
               $.ajax({
                   method: "DELETE",
-                  url: "/list/" + this.list.id + "/tasks/" + task.task.id,
+                  url: "/list/" + this.listTasks.id + "/tasks/" + task.task.id,
               })
-              .done(response => {}
-
+              .done(response => 
+                  this.listTasks.tasks = this.listTasks.tasks.filter(oldTask=> oldTask.id !== task.task.id)
               )
               .fail(function(e){
                   console.log(e.responseText);
               })
-            },
-            test(e) {
-              
             }
         }
     };
