@@ -20,18 +20,14 @@
         },
 
         methods: {
-            destroyTask(task) {
-            $.ajaxSetup({
-                  headers: {
-                      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                  }
-              });
+            destroyTask(taskId) {
+
               $.ajax({
                   method: "DELETE",
-                  url: "/list/" + this.listId + "/tasks/" + task.task.id,
+                  url: "/list/" + this.listId + "/tasks/" + taskId,
               })
               .done(response => 
-                  this.tasks = this.tasks.filter(oldTask=> oldTask.id !== task.task.id)
+                  this.tasks = this.tasks.filter(oldTask=> oldTask.id !== taskId)
               )
               .fail(function(e){
                   console.log(e.responseText);

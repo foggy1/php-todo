@@ -22,24 +22,9 @@ const app = new Vue({
 });
 
 $(function() {
-    // $.ajaxSetup({
-    //     headers: {
-    //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    //     }
-    // });
-    // $(".todos").on("click", "input", function(e) {
-    //     var id = Number(e.target.closest(".checkbox").id);
-    //     var list_id = Number(e.target.closest(".todos").id);
-    //     var that = e.target;
-    //     $.ajax({
-    //         method: "PUT",
-    //         url: "/list/" + list_id + "/tasks/" + id
-    //     })
-    //     .done(function(response){
-    //         response === "1" ? $(that).parent("label").css("text-decoration", "line-through") : $(that).parent("label").css("text-decoration", "none");
-    //     })
-    //     .fail(function(e){
-    //         console.log(e.responseText);
-    //     })
-    // });
+    $.ajaxSetup({
+      headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    });
 });

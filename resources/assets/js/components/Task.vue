@@ -56,7 +56,7 @@
                  
             },
             destroy() {
-              this.$emit('remove', this);
+              this.$emit('remove', this.task.id);
             }
         }
     };
