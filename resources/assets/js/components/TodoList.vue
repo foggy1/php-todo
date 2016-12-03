@@ -1,6 +1,6 @@
 <template>
-    <div :id="listTasks.id" class="outer-container list-group todos">
-        <task  v-for="task in listTasks.tasks" :task="task" :listId="listTasks.id" :key="task.id" @remove="destroyTask"></task>
+    <div :id="listId" class="outer-container list-group todos">
+        <task  v-for="task in tasks" :task="task" :listId="listId" :key="task.id" @remove="destroyTask"></task>
     </div>
 </template>
 
@@ -10,7 +10,8 @@
 
         data(){
             return {
-                listTasks: this.list
+                tasks: this.list.tasks.reverse(),
+                listId: this.list.id
             }
         },
 
@@ -27,10 +28,10 @@
               });
               $.ajax({
                   method: "DELETE",
-                  url: "/list/" + this.listTasks.id + "/tasks/" + task.task.id,
+                  url: "/list/" + this.listId + "/tasks/" + task.task.id,
               })
               .done(response => 
-                  this.listTasks.tasks = this.listTasks.tasks.filter(oldTask=> oldTask.id !== task.task.id)
+                  this.tasks = this.tasks.filter(oldTask=> oldTask.id !== task.task.id)
               )
               .fail(function(e){
                   console.log(e.responseText);
