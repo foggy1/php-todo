@@ -91,7 +91,6 @@ class ListTaskController extends Controller
         $task = Task::find($id);
         $task->status = $newStatus;
         $task->save();
-        return var_dump($task->status);
     }
 
     /**
@@ -105,6 +104,5 @@ class ListTaskController extends Controller
         $list = TodoList::find($list_id);
         $task = Task::find($id);
         $task->delete();
-        return json_encode($list->tasks->sortByDesc('created_at'));
     }
 }
