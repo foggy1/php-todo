@@ -1,6 +1,6 @@
 <template>
     <div :id="listy.id" class="outer-container list-group todos">
-        <task  v-for="task in tasky" :task="task" :listId="listy.id" :key="task.id" @remove="tasky.splice(index, 1)"></task>
+        <task  v-for="task in tasky" :task="task" :listId="listy.id" :key="task.id" @remove="destroyTask"></task>
     </div>
 </template>
 
@@ -38,8 +38,7 @@
               })
             },
             test(e) {
-                debugger;
-                this.tasky.splice(e, 1);
+              
             }
         }
     };

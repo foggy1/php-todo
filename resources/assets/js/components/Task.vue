@@ -56,10 +56,7 @@
                  
             },
             destroy() {
-              debugger;
               this.$emit('remove', this);
-              this.exists = false;
-              this.$parent.destroyTask(this);
             }
         }
     };
