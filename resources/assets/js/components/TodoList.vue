@@ -38,7 +38,7 @@
             addTask(task) {
               $.ajax({
                   method: "POST",
-                  url: "/list/" + this.listId + "/tasks/",
+                  url: "/list/" + this.listId + "/tasks",
                   data: {'task': task}
               })
               .done(response => {
