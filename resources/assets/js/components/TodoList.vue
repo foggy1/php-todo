@@ -1,5 +1,6 @@
 <template>
     <div :id="listId" class="outer-container list-group todos">
+        <task-maker :listId="listId" @add="addTask"></task-maker>
         <task  v-for="task in tasks" :task="task" :listId="listId" :key="task.id" @remove="destroyTask"></task>
     </div>
 </template>
@@ -32,6 +33,21 @@
               .fail(function(e){
                   console.log(e.responseText);
               })
+            },
+            addTask(task) {
+              $.ajax({
+                  method: "POST",
+                  url: "/list/" + this.listId + "/tasks/",
+                  data: {'task': task}
+              })
+              .done(response => {
+                  this.tasks.unshift(task);
+              }
+              )
+              .fail(function(e){
+                  console.log(e.responseText);
+              })
+
             }
         }
     };
