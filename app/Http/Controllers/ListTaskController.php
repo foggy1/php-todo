@@ -17,6 +17,10 @@ class ListTaskController extends Controller
     public function index($list_id)
     {
         $list = TodoList::find($list_id);
+        $tasks = $list->tasks->sortByDesc('created_at');
+        return view('user.lists.show', ['user' => Auth::user(),
+                                        'list' => $list,
+                                        'tasks' => $tasks]);
     }
 
     /**
@@ -81,11 +85,12 @@ class ListTaskController extends Controller
      */
     public function update(Request $request, $list_id, $id)
     {
+        $newStatus = $request->input('task.status');
+        $newStatus === "false" ? $newStatus = false : $newStatus = true; 
         $list = TodoList::find($list_id);
         $task = Task::find($id);
-        $task->status === 0 ? $task->status = 1 : $task->status = 0;
+        $task->status = $newStatus;
         $task->save();
-        return $task->status;
     }
 
     /**
@@ -94,8 +99,10 @@ class ListTaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($list_id, $id)
     {
-        //
+        $list = TodoList::find($list_id);
+        $task = Task::find($id);
+        $task->delete();
     }
 }
