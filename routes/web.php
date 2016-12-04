@@ -36,4 +36,6 @@ Route::get('/home', function() {
 
 Route::resource('user.lists', 'UserListController');
 
-Route::resource('list.tasks', 'ListTaskController');
+Route::resource('list.tasks', 'ListTaskController', ['except' => [
+  'index'
+]]);
