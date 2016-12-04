@@ -60,6 +60,9 @@ class UserListController extends Controller
      */
     public function show($user_id, $id)
     {
+        if (auth()->user()->id != $user_id) {
+            abort(404);
+        };
         $user = User::find($user_id);
         $list = TodoList::find($id);
         $tasks = $list->tasks->sortByDesc('created_at');
