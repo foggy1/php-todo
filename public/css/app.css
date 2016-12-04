@@ -5773,4 +5773,11 @@ button.close {
 .completed {
   text-decoration: line-through; }
 
+.small-container {
+  width: 20%;
+  margin: auto; }
+
+#links li a:hover {
+  background-color: peru; }
+
 /*# sourceMappingURL=app.css.map */

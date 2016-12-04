@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <div class="col-lg-6">
+    <div class="col-lg-6 col-lg-offset-3">
       <div class="input-group">
         <span class="input-group-addon">
           <input @change="update" v-model="task.status" type="checkbox" aria-label="...">

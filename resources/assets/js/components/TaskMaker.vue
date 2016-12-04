@@ -1,11 +1,11 @@
 <template>
   <div class="row">
-    <div class="col-lg-6">
+    <div class="col-lg-6 col-lg-offset-3">
       <div class="input-group">
         <input v-model="task.description" type="text" class="form-control" aria-label="...">
         <span class="input-group-btn">
           <button @click="store" class="btn btn-success" type="button">
-            <i class="glyphicon glyphicon-pencil"></i>
+            <i class="glyphicon glyphicon-plus"></i>
           </button>
         </span>
     </div>
