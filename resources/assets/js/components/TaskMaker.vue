@@ -33,19 +33,9 @@
         },
 
         methods: {
-            store(e) {
-              $.ajax({
-                  method: "POST",
-                  url: "/list/" + this.listId + "/tasks/",
-                  data: {'task': this.task}
-              })
-              .done(response => 
-                this.$emit('add', this.task.id);
-              )
-              .fail(function(e){
-                  console.log(e.responseText);
-              })
-                 
+            store() {
+              this.$emit('add', this.task);
+              this.task.description = '';
             }
         }
     };
