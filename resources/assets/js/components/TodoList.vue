@@ -27,8 +27,9 @@
                   method: "DELETE",
                   url: "/list/" + this.listId + "/tasks/" + taskId,
               })
-              .done(response => 
-                  this.tasks = this.tasks.filter(oldTask=> oldTask.id !== taskId)
+              .done(response => {
+                  this.tasks = response.reverse();
+                }
               )
               .fail(function(e){
                   console.log(e.responseText);
@@ -41,7 +42,7 @@
                   data: {'task': task}
               })
               .done(response => {
-                  this.tasks.unshift(task);
+                  this.tasks = response.reverse();
               }
               )
               .fail(function(e){

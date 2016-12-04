@@ -52,6 +52,7 @@
                   data: {'task': this.task, 'check': check}
               })
               .done(function(response){
+                // console.log(response)
               })
               .fail(function(e){
                   console.log(e.responseText);
