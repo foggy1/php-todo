@@ -14,14 +14,14 @@ class ListTaskController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($list_id)
-    {
-        $list = TodoList::find($list_id);
-        $tasks = $list->tasks->sortByDesc('created_at');
-        return view('user.lists.show', ['user' => Auth::user(),
-                                        'list' => $list,
-                                        'tasks' => $tasks]);
-    }
+    // public function index($list_id)
+    // {
+    //     $list = TodoList::find($list_id);
+    //     $tasks = $list->tasks->sortByDesc('created_at');
+    //     return view('user.lists.show', ['user' => Auth::user(),
+    //                                     'list' => $list,
+    //                                     'tasks' => $tasks]);
+    // }
 
     /**
      * Show the form for creating a new resource.
@@ -47,11 +47,7 @@ class ListTaskController extends Controller
             'description' => $request->input('task.description'),
             'todo_list_id' => $list_id
         ]);
-
-        $tasks = $list->tasks->sortByDesc('created_at');
-        return view('user.lists.show', ['user' => Auth::user(), 
-                                        'list' => $list, 
-                                        'tasks' => $tasks]);
+        return $list->tasks;
     }
 
     /**
@@ -89,7 +85,7 @@ class ListTaskController extends Controller
         $task = Task::find($id);
 
         $newStatus = $request->input('task.status');
-        $newStatus === "false" || "0" ? $newStatus = false : $newStatus = true;
+        $newStatus === "false" || $newStatus === "0" ? $newStatus = false : $newStatus = true;
         if ($request->input('check') === 'not check') {
             $newDescription = $request->input('task.description');
             $task->description = $newDescription;
@@ -109,5 +105,6 @@ class ListTaskController extends Controller
         $list = TodoList::find($list_id);
         $task = Task::find($id);
         $task->delete();
+        return $list->tasks;
     }
 }
