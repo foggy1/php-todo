@@ -15,6 +15,7 @@ require('./bootstrap');
 
 Vue.component('example', require('./components/Example.vue'));
 Vue.component('todo-list', require('./components/TodoList.vue'));
+Vue.component('task-maker', require('./components/TaskMaker.vue'));
 Vue.component('task', require('./components/Task.vue'));
 
 const app = new Vue({

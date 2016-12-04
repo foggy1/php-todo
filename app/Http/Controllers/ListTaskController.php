@@ -44,7 +44,7 @@ class ListTaskController extends Controller
     {
         $list = TodoList::find($list_id);
         Task::create([
-            'description' => $request['description'],
+            'description' => $request->input('task.description'),
             'todo_list_id' => $list_id
         ]);
 
