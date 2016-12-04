@@ -1,6 +1,7 @@
 <template>
     <div :id="listId" class="outer-container list-group todos">
         <task-maker :listId="listId" @add="addTask"></task-maker>
+        </br>
         <task  v-for="task in tasks" :task="task" :listId="listId" :key="task.id" @remove="destroyTask"></task>
     </div>
 </template>
