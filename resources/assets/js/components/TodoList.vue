@@ -3,6 +3,7 @@
         <task-maker :listId="listId" @add="addTask"></task-maker>
         </br>
         <task  v-for="task in tasks" :task="task" :listId="listId" :key="task.id" @remove="destroyTask"></task>
+        <button @click="clear" type="button" class="btn btn-primary pull-right">Clear</button>
     </div>
 </template>
 
@@ -50,6 +51,13 @@
                   console.log(e.responseText);
               })
 
+            },
+            clear() {
+              this.tasks.forEach(task => {
+                  if (task.status === 1 || task.status === true) {
+                    this.destroyTask(task.id)
+                  }
+              })
             }
         }
     };
